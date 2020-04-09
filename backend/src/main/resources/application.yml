@@ -1,0 +1,10 @@
+mybatis:
+  typeAliasesPackage: com.example.backend.domain
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com.example.backend.mapper/*.xml
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
