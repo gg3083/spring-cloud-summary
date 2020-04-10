@@ -11,7 +11,7 @@
     </insert>
 
     <select id="selectAll" resultType="com.example.backend.domain.User">
-        select * , pk_user_id as id  from t_user where is_delete = 1
+        select * , pk_user_id as id  from t_user
     </select>
 
 </mapper>

@@ -1,0 +1,12 @@
+## Spring 各个组件的使用
+- [x] spring events //发布订阅者模式
+- [x] spring Resources
+- [x] spring Validation
+- [x] Mock/Test
+- [x] DAO/ORM
+- [x] Spring WebFlux/Spring MVC
+- [x] Scheduling/Tasks
+- [x] WebClient/RestTemple
+- [ ] Transactions
+- [ ] WebSocket/SockJS/STOMP Messaging
+- [ ] Remoting/JMS/JCA/JMX/Email/Caching
