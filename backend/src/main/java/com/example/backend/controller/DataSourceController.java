@@ -2,8 +2,10 @@ package com.example.backend.controller;
 
 import com.example.backend.config.db.RedisClient;
 import com.example.backend.domain.config.DBProperties;
+import com.example.backend.domain.po.JsonBack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/db/")
 @Slf4j
+@CrossOrigin
 public class DataSourceController {
 
     @Autowired
@@ -26,9 +29,9 @@ public class DataSourceController {
 
 
     @GetMapping("/mysql/list")
-    public Object mysqlList(){
+    public JsonBack mysqlList(){
         log.info("{}", dbProperties.getDbConfig());
-        return dbProperties.getDbConfig();
+        return JsonBack.buildSuccJson(dbProperties.getDbConfig());
     }
 
     @GetMapping("/redis/list")

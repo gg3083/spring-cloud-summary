@@ -2,12 +2,14 @@ package com.example.backend.controller;
 
 import com.example.backend.domain.User;
 import com.example.backend.mapper1.UserMapper;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -36,6 +38,17 @@ public class UserController {
     @GetMapping("user")
     public ResponseEntity<List<User>> list(){
         return ResponseEntity.ok(userMapper.selectAll());
+    }
+
+    @PostMapping("user/login")
+    public HashMap login(String username, String password){
+        HashMap hashMap = new HashMap();
+        hashMap.put("code",0);
+        hashMap.put("id",666);
+        hashMap.put("realName",username);
+        hashMap.put("role","ROLE_ADMIN");
+        hashMap.put("token","token");
+        return hashMap;
 
     }
 }
