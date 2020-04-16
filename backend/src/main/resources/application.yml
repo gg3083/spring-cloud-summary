@@ -21,6 +21,20 @@ spring:
       enable-auto-commit: true
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  quartz:
+    job-store-type: jdbc
+    # 初始化表
+    jdbc:
+      initialize-schema: never
+    # quartz 属性配置
+    properties:
+      org:
+        quartz:
+          scheduler:
+            # 如果使用集群，实例名需相同
+            instanceName: QuartzScheduler
+            # 如果使用集群，id需相同
+            instanceId: CLUSTERED
 eureka:
   client:
     service-url:

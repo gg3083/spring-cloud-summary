@@ -1,7 +1,6 @@
 package com.gg.backend;
 
 
-import com.gg.backend.config.db.RedisClient;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableAsync
 public class BackendApplication implements ApplicationRunner {
 
-    @Autowired
-    RedisClient redisClient;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

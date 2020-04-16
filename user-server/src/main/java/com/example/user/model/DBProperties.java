@@ -1,4 +1,4 @@
-package com.example.user.model;
+package com.gg.user.model;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

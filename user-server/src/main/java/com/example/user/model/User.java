@@ -1,4 +1,4 @@
-package com.example.user.model;
+package com.gg.user.model;
 
 import lombok.Builder;
 import lombok.Data;
