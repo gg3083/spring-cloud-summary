@@ -39,6 +39,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8001/eureka/
+  instance:
+    prefer-ip-address: true #显示服务器IP
 management:
   endpoints:
     web:
@@ -46,3 +48,9 @@ management:
         include: "*"
     health:
       show-details: always
+security:
+  oauth2:
+    resource:
+      id: service
+      user-info-uri: http://localhost:8083/uaa/user # 使用auth-server进行认证授权，
+      prefer-token-info: false

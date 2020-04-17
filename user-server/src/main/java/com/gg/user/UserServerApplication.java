@@ -1,14 +1,15 @@
-package com.example.user;
+package com.gg.user;
 
-import com.example.user.model.DBProperties;
-import com.example.user.model.User;
+import com.gg.user.model.DBProperties;
+import com.gg.user.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,10 @@ import java.util.Optional;
 @SpringBootApplication
 @RestController
 @Slf4j
+//@EnableOAuth2Sso
+@EnableDiscoveryClient
+
+@EnableEurekaClient
 //@EnableResourceServer
 public class UserServerApplication implements ApplicationRunner {
 
