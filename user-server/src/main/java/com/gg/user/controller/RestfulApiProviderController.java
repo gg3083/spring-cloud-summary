@@ -1,4 +1,4 @@
-package com.easy.securityOauth2AuthCodeServer.controller;
+package com.gg.user.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

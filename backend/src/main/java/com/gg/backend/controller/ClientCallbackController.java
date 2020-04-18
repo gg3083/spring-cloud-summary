@@ -1,4 +1,4 @@
-package com.easy.securityOauth2AuthCodeClient1.controller;
+package com.gg.backend.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +30,16 @@ public class ClientCallbackController {
         params.add("code", code);
         params.add("client_id", "client1");
         params.add("client_secret", "secret");
-        params.add("redirect_uri", "http://localhost:8081/client/account/redirect");
+        params.add("redirect_uri", "http://localhost:8091/client/account/redirect");
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/oauth/token", requestEntity, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8083/oauth/token", requestEntity, String.class);
         String token = response.getBody();
         log.info("token => {}", token);
         return token;
+    }
+
+    @RequestMapping("/client/account/redirect2")
+    public String getToken2(@RequestParam String code) {
+        return code;
     }
 }

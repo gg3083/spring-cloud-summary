@@ -1,4 +1,4 @@
-package com.easy.securityOauth2AuthCodeServer.config;
+package com.gg.user.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,7 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorities("ROLE_CLIENT")
                 .scopes("get_user_info", "get_childlist")
                 .secret("secret")
-                .redirectUris("http://localhost:8081/client/account/redirect")
+                .redirectUris("http://localhost:8091/client/account/redirect")
                 .autoApprove(true)
                 .autoApprove("get_user_info")
                 .and()

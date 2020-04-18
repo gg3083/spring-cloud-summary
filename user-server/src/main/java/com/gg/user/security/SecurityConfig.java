@@ -1,4 +1,4 @@
-package com.easy.securityOauth2AuthCodeServer.config;
+package com.gg.user.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,13 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.
                 requestMatchers()
                 // 必须登录过的用户才可以进行 oauth2 的授权码申请
-                .antMatchers("/", "/home", "/login", "/oauth/authorize")
+                .antMatchers("/", "/user/login", "/login", "/oauth/authorize")
                 .and()
                 .authorizeRequests()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/loginPage")
+                .loginProcessingUrl("/user/login")
                 .and()
                 .httpBasic()
                 .disable()

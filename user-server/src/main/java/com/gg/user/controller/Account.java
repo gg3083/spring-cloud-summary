@@ -1,4 +1,4 @@
-package com.easy.securityOauth2AuthCodeServer.controller;
+package com.gg.user.controller;
 
 import lombok.Builder;
 import lombok.Data;
