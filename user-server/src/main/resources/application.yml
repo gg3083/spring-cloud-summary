@@ -1,21 +1,29 @@
 server:
-  port: 8083
-wf:
-  oauth:
-    clientid: wf_oauth
-    secret: wf_secret
+  port: 9002
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://localhost:9000/eureka/
   instance:
     prefer-ip-address: true #显示服务器IP
 spring:
   application:
     name: auth-server
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 9
+management:
+  endpoint:
+    health:
+      enabled: true
 
-security:
-  oauth2:
-    resource:
-      filter-order: 3
-logging.level.org.springframework.security: DEBUG
+logging:
+  level:
+    org.springframework.security: DEBUG

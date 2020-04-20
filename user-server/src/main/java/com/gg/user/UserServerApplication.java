@@ -33,12 +33,12 @@ public class UserServerApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (int i = 0; i < 10; i++) {
-            list.add(
-                    User.builder().name(i+"").password(i*100+"").build()
-            );
-        }
-        list.forEach(System.out::println);
+//        for (int i = 0; i < 10; i++) {
+//            list.add(
+//                    User.builder().name(i+"").password(i*100+"").build()
+//            );
+//        }
+//        list.forEach(System.out::println);
     }
 
 

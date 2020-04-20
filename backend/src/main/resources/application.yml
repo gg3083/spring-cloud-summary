@@ -4,7 +4,7 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:com.gg.backend.mapper/*.xml
 server:
-  port: 8091
+  port: 9001
 spring:
   profiles:
     active: dev
@@ -38,7 +38,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://localhost:9000/eureka/
   instance:
     prefer-ip-address: true #显示服务器IP
 management:
@@ -48,3 +48,20 @@ management:
         include: "*"
     health:
       show-details: always
+
+security:
+  oauth2:
+    client:
+      client-id: user-client
+      client-secret: user-secret-8888
+      user-authorization-uri: http://localhost:9002/oauth/authorize
+      access-token-uri: http://localhost:9002/oauth/token
+    #    resource:
+    #      id: user-client
+    #      user-info-uri: user-info
+    #    authorization:
+    #      check-token-access: http://localhost:6001/oauth/check_token
+    resource:
+      jwt:
+        key-uri: http://localhost:9002/oauth/token_key
+        key-value: dev
