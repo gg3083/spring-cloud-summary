@@ -22,31 +22,49 @@ import Vue before Element
     new Vue({
         el: '#app',
         data: function() {
-            return { visible: false }
+            return {
+                visible: false,
+                token: null
+            }
         },
         created(){
+            var storage = window.localStorage;
+            let token = storage.getItem('access_token');
+            this.token = token
+
             this.init()
+            console.log("init....")
         },
-        methods:{
-            init(){
+        methods: {
+            init() {
                 axios({
-                    method:'get',
-                    url:'get'
-                }).then(function(res){
+                    method: 'get',
+                    url: 'get',
+                    headers: {
+                            'Authorization': 'Bearer ' + this.token,
+                    },
+                }).then(function (res) {
                     console.log(res.data);
-                    if (res.data.code == 1){
-                        if (res.data.errorCode == "401"){
+                    if (res.data.code == 1) {
+                        // if (res.data.errorCode == "401") {
                             console.log("开始鉴权")
-                            if(confirm("权限不足,去登录？"))
-                            {
-                                window.location.href = "/loginPage"
-                            }
-                        }else {
+                            if (confirm("权限不足,去登录？")) {
+                                let winObj = window.open("/loginPage", "_blank")
+                                var loop = setInterval(function () {
+                                    if (winObj.closed) {
+                                        clearInterval(loop);
+                                        parent.location.reload();
+                                    }
+                                }, 1);
+                            // }
+                        } else {
                             alert(res.data.message)
                         }
+                    }else {
+                        alert(res.data)
                     }
                 });
-            }
+            },
         }
     })
 </script>
