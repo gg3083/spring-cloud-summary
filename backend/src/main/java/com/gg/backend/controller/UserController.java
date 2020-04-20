@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -65,6 +66,19 @@ public class UserController {
         ResponseEntity<String> responseEntity  = restTemplate.postForEntity("http://localhost:9002/oauth/token", requestEntity,String.class);
 
         return new JsonBack(JSONObject.toJSONString(responseEntity.getBody()));
+
+    }
+
+
+    @PostMapping("user/login2")
+    public HashMap login(String username, String password){
+        HashMap hashMap = new HashMap();
+        hashMap.put("code",0);
+        hashMap.put("id",666);
+        hashMap.put("realName",username);
+        hashMap.put("role","ROLE_ADMIN");
+        hashMap.put("token","token");
+        return hashMap;
 
     }
 }

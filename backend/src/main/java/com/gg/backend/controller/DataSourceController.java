@@ -1,6 +1,6 @@
 package com.gg.backend.controller;
 
-import com.gg.backend.config.db.RedisClientString;
+import com.gg.backend.config.db.RedisClient;
 import com.gg.backend.domain.config.DBProperties;
 import com.gg.backend.domain.po.JsonBack;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class DataSourceController {
 //    RedisClient redisClient;
 
     @Autowired
-    RedisClientString redisClient;
+    RedisClient redisClient;
 
 
     @GetMapping("/mysql/list")
@@ -38,9 +38,9 @@ public class DataSourceController {
     }
 
     @GetMapping("/redis/list")
-    public Object redisList(){
+    public JsonBack redisList(){
 //        log.info("{}", redisClient.list());
-        return  redisClient.list();
+        return  JsonBack.buildSuccJson(redisClient.list());
     }
 
 

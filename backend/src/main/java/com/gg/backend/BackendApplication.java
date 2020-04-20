@@ -1,6 +1,7 @@
 package com.gg.backend;
 
 
+import com.gg.backend.config.db.RedisClient;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,12 @@ import org.springframework.web.client.RestTemplate;
 public class BackendApplication implements ApplicationRunner {
 
 
+    @Autowired
+    RedisClient redisClient;
     @Override
     public void run(ApplicationArguments args) throws Exception {
         for (int i = 1; i < 11; i++) {
-         //  redisClient.set(i+"", JSONObject.toJSONString(i*100+""));
+//           redisClient.set(i+"", JSONObject.toJSONString(i*100+""));
         }
     }
 
