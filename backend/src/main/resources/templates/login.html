@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>back-end</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <h1 >登录页</h1>
+    <el-form :model="form" label-width="80px">
+        <el-form-item label="用户名">
+            <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+            <el-input v-model="form.password"  type="password"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="submitForm()">提交</el-button>
+        </el-form-item>
+    </el-form>
+</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                form:{
+                    userName: 'admin',
+                    password: ''
+                }
+            }
+        },
+        created(){
+            // this.init()
+        },
+        methods:{
+            login(){
+                axios.post('/user/login', {
+                    userName: this.form.userName,
+                    password: this.form.password
+                })
+                    .then(function (response) {
+                        let res = response.data;
+                        if (res.code == 0){
+                            console.log("登录成功")
+                            console.log(res.access_token)
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            submitForm(){
+                this.login()
+            }
+        }
+    })
+</script>
+</html>

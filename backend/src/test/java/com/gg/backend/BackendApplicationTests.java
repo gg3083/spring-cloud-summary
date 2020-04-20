@@ -1,6 +1,7 @@
 package com.gg.backend;
 
 import com.alibaba.fastjson.JSONObject;
+import com.gg.backend.controller.UserController;
 import com.gg.backend.domain.User;
 import com.gg.backend.mapper1.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -97,5 +98,13 @@ class BackendApplicationTests {
             return arrayList;
         }).block();
         System.err.println(JSONObject.toJSONString(map));
+    }
+
+    @Autowired
+    UserController userController;
+
+    public @Test void login(){
+//        Object res = userController.login("admin","123456");
+//        System.err.println(res);
     }
 }

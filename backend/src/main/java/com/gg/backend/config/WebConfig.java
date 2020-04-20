@@ -28,5 +28,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         log.info("注册html页面");
         registry.addViewController("/main").setViewName("index");
+        registry.addViewController("/loginPage").setViewName("login");
     }
 }

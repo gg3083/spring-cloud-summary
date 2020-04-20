@@ -88,7 +88,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .accessDeniedHandler(customAccessDeniedHandler);
     }
 
-    final String[] urls = new String[]{"/get2","/main"};
+    final String[] urls = new String[]{"/get2","/main","/loginPage","/user/login"};
     /***设置不拦截规则*/
   @Override
   public void configure(HttpSecurity http) throws Exception {

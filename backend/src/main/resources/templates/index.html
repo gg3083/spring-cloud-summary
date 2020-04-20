@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="app">
-    <el-button @click="visible = true">Button</el-button>
+    <el-button @click="visible = true">首页</el-button>
     <el-dialog :visible.sync="visible" title="Hello world">
         <p>Try Element22</p>
     </el-dialog>
@@ -37,6 +37,10 @@ import Vue before Element
                     if (res.data.code == 1){
                         if (res.data.errorCode == "401"){
                             console.log("开始鉴权")
+                            if(confirm("权限不足,去登录？"))
+                            {
+                                window.location.href = "/loginPage"
+                            }
                         }else {
                             alert(res.data.message)
                         }
