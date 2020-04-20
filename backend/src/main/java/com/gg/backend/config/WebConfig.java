@@ -1,12 +1,13 @@
 package com.gg.backend.config;
 
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
 
 //
-//@Configuration
-//@EnableWebMvc
+@Configuration
+@EnableWebMvc
+@Slf4j
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
@@ -23,4 +24,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new CORSInterceptor());
     }
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        log.info("注册html页面");
+        registry.addViewController("/main").setViewName("index");
+    }
 }

@@ -130,6 +130,10 @@
             <artifactId>spring-cloud-starter-oauth2</artifactId>
             <version>2.2.1.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -151,6 +155,7 @@
                 <includes>
                     <include>**/*.sql</include>
                     <include>**/*.yml</include>
+                    <include>templates/*</include>
                 </includes>
             </resource>
         </resources>

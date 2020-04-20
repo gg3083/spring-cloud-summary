@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>back-end</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element22</p>
+    </el-dialog>
+</div>
+</body>
+import Vue before Element
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { visible: false }
+        },
+        created(){
+            this.init()
+        },
+        methods:{
+            init(){
+                axios({
+                    method:'get',
+                    url:'get'
+                }).then(function(res){
+                    console.log(res.data);
+                    if (res.data.code == 1){
+                        if (res.data.errorCode == "401"){
+                            console.log("开始鉴权")
+                        }else {
+                            alert(res.data.message)
+                        }
+                    }
+                });
+            }
+        }
+    })
+</script>
+</html>
