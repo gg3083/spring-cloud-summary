@@ -2,7 +2,7 @@ package com.gg.backend.controller;
 
 import com.gg.backend.config.db.RedisClient;
 import com.gg.backend.domain.config.DBProperties;
-import com.gg.backend.domain.po.JsonBack;
+import com.gg.backend.domain.dto.JsonBack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

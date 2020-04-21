@@ -1,4 +1,4 @@
-package com.gg.backend.domain.po;
+package com.gg.backend.domain.dto;
 
 import com.gg.backend.exception.CustomException;
 import com.gg.backend.exception.CustomExceptionType;
