@@ -1,4 +1,4 @@
-package com.gg.backend.config;
+package com.gg.user.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
