@@ -1,6 +1,6 @@
 package com.gg.backend.exception;
 
-import com.gg.backend.domain.po.JsonBack;
+import com.gg.backend.domain.dto.JsonBack;
 import com.gg.backend.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

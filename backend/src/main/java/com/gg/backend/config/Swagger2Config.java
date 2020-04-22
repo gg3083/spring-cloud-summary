@@ -28,7 +28,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 public class Swagger2Config {
 
     @Value("${security.oauth2.client.access-token-uri}")
-    private String AUTH_SERVER;
+    private String authTokenUrl;
     @Value("${security.oauth2.client.client-id}")
     private String clientId;
     @Value("${security.oauth2.client.client-secret}")
@@ -38,7 +38,7 @@ public class Swagger2Config {
 
     @Bean
     public Docket controllerApi() {
-        return new Docket(DocumentationType.SWAGGER_2).groupName("v2") .apiInfo(apiInfo())
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select().paths(postPaths())
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
                 .paths(springBootActuatorJmxPaths())
@@ -63,12 +63,12 @@ public class Swagger2Config {
      */
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "接口文档",
-                "这是描述!",
-                "版本1.0",
-                "",
-                new Contact("Gimi", "http://thinkpad-pc:9001/actuator", ""),
-                "2.0", "", Collections.emptyList());
+                "spring-cloud-start",
+                "spring-cloud-start接口设计!",
+                "v1.0.0",
+                "www.baidu.com",
+                new Contact("Gimi", "http://thinkpad-pc:9001/actuator", "gg3083.cn@gmail.com"),
+                "APACHE LICENSE, VERSION 2.0", "http://www.apache.org/licenses/LICENSE-2.0", Collections.emptyList());
     }
 
 
@@ -78,8 +78,8 @@ public class Swagger2Config {
      */
     private OAuth securitySchema() {
         //这里设置 client 的 scope
-        final AuthorizationScope authorizationScope = new AuthorizationScope("all", "允许测试阶段访问的所有接口");
-        final GrantType grantType = new ResourceOwnerPasswordCredentialsGrant(AUTH_SERVER);
+        final AuthorizationScope authorizationScope = new AuthorizationScope("all", "允许访问的所有接口");
+        final GrantType grantType = new ResourceOwnerPasswordCredentialsGrant(authTokenUrl);
         return new OAuth(securitySchemaOAuth2, Arrays.asList(authorizationScope), Arrays.asList(grantType));
     }
 
@@ -97,7 +97,7 @@ public class Swagger2Config {
 
     private List<SecurityReference> defaultAuth() {
         final AuthorizationScope authorizationScope =
-                new AuthorizationScope("openid", "允许测试阶段访问的所有接口");
+                new AuthorizationScope("all", "允许测试阶段访问的所有接口");
         final AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
         return Arrays.asList(

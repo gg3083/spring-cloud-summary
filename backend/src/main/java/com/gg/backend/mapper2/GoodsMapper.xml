@@ -12,7 +12,7 @@
     </insert>
 
     <select id="selectAll" resultType="com.gg.backend.domain.Goods">
-        select * , pk_goods_id as id  from t_goods where is_delete = 1
+        select * , pk_goods_id as id  from t_goods where is_delete = 0
     </select>
 
 

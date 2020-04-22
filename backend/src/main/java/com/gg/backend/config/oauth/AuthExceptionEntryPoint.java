@@ -1,6 +1,6 @@
 package com.gg.backend.config.oauth;
 
-import com.gg.backend.domain.po.JsonBack;
+import com.gg.backend.domain.dto.JsonBack;
 import com.gg.backend.util.JsonUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;

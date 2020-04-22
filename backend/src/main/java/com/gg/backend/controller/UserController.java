@@ -3,7 +3,7 @@ package com.gg.backend.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.gg.backend.domain.LoginDTO;
 import com.gg.backend.domain.User;
-import com.gg.backend.domain.po.JsonBack;
+import com.gg.backend.domain.dto.JsonBack;
 import com.gg.backend.mapper1.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
