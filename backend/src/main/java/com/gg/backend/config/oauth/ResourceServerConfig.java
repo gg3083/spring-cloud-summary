@@ -95,7 +95,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             "/swagger-ui.html",
             "/swagger-resources/**",
             "/v2/api-docs",
-            "/goods/**"
+            "/goods/**",
+            "/open/**",
     };
     /***设置不拦截规则*/
   @Override
