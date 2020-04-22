@@ -5,6 +5,8 @@ mybatis:
   mapper-locations: classpath:com.gg.backend.mapper/*.xml
 server:
   port: 9001
+  servlet:
+    context-path: /backend
 spring:
   profiles:
     active: dev
@@ -62,8 +64,8 @@ security:
     client:
       client-id: user-client
       client-secret: user-secret-8888
-      user-authorization-uri: http://localhost:9002/oauth/authorize
-      access-token-uri: http://localhost:9002/oauth/token
+      user-authorization-uri: http://localhost:8999/auth-user/oauth/authorize
+      access-token-uri: http://localhost:8999/auth-user/oauth/token
     #    resource:
     #      id: user-client
     #      user-info-uri: user-info
@@ -71,5 +73,5 @@ security:
     #      check-token-access: http://localhost:6001/oauth/check_token
     resource:
       jwt:
-        key-uri: http://localhost:9002/oauth/token_key
+        key-uri: http://localhost:8999/auth-user/oauth/token_key
         key-value: dev

@@ -1,5 +1,7 @@
 server:
   port: 9002
+  servlet:
+    context-path: /auth-user
 eureka:
   client:
     service-url:
@@ -8,7 +10,7 @@ eureka:
     prefer-ip-address: true #显示服务器IP
 spring:
   application:
-    name: auth-server
+    name: auth-user
   datasource:
     url: jdbc:mysql://localhost:3306/spring_cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
