@@ -21,6 +21,25 @@ spring:
       idle-timeout: 600000
       max-lifetime: 1800000
       maximum-pool-size: 9
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #设置数据库方
+security:
+  oauth2:
+    client:
+      client-id: user-client
+      client-secret: user-secret-8888
+      user-authorization-uri: http://localhost:8999/auth-user/oauth/authorize
+      access-token-uri: http://localhost:8999/auth-user/oauth/token
+    #    resource:
+    #      id: user-client
+    #      user-info-uri: user-info
+    #    authorization:
+    #      check-token-access: http://localhost:6001/oauth/check_token
+    resource:
+      jwt:
+        key-uri: http://localhost:8999/auth-user/oauth/token_key
+        key-value: dev
 management:
   endpoint:
     health:
@@ -28,4 +47,4 @@ management:
 
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework.security: info

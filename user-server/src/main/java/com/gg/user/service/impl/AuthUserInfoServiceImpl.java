@@ -1,12 +1,17 @@
 package com.gg.user.service.impl;
 
-import com.gg.user.entity.UserInfo;
 import com.gg.user.dao.AuthUserInfoDao;
+import com.gg.user.entity.UserInfo;
+import com.gg.user.entity.dto.PageInfo;
 import com.gg.user.service.AuthUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * (AuthUserInfo)表服务实现类
@@ -19,19 +24,25 @@ public class AuthUserInfoServiceImpl implements AuthUserInfoService {
     @Resource
     private AuthUserInfoDao authUserInfoDao;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserInfo queryById(Integer id) {
         return null;
     }
 
     @Override
-    public List<UserInfo> queryAllByLimit(int offset, int limit) {
-        return null;
+    public PageInfo<UserInfo> list(int pageNo, int pageSize, String searchKey) {
+        Page<UserInfo> all = authUserInfoDao.findAll(PageRequest.of(pageNo-1, pageSize, Sort.by(Sort.Direction.DESC,"id")));
+        return new PageInfo<>(all);
     }
 
     @Override
-    public UserInfo insert(UserInfo authUserInfo) {
-        return null;
+    public UserInfo save(UserInfo authUserInfo) {
+        authUserInfo.setPassword(passwordEncoder.encode(authUserInfo.getPassword()));
+        authUserInfoDao.save(authUserInfo);
+        return authUserInfo;
     }
 
     @Override

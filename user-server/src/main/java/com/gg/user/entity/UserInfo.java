@@ -2,9 +2,7 @@ package com.gg.user.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +20,7 @@ public class UserInfo implements Serializable {
     private static final long serialVersionUID = -91924524945995395L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String userName;

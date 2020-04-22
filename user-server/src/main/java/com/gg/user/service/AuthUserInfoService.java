@@ -1,7 +1,7 @@
 package com.gg.user.service;
 
 import com.gg.user.entity.UserInfo;
-import java.util.List;
+import com.gg.user.entity.dto.PageInfo;
 
 /**
  * (AuthUserInfo)表服务接口
@@ -22,11 +22,11 @@ public interface AuthUserInfoService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param pageNo 查询起始位置
+     * @param pageSize 查询条数
      * @return 对象列表
      */
-    List<UserInfo> queryAllByLimit(int offset, int limit);
+    PageInfo<UserInfo> list(int pageNo, int pageSize, String searchKey);
 
     /**
      * 新增数据
@@ -34,7 +34,7 @@ public interface AuthUserInfoService {
      * @param authUserInfo 实例对象
      * @return 实例对象
      */
-    UserInfo insert(UserInfo authUserInfo);
+    UserInfo save(UserInfo authUserInfo);
 
     /**
      * 修改数据
