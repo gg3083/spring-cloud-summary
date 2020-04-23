@@ -6,8 +6,6 @@ import com.gg.user.entity.dto.PageInfo;
 import com.gg.user.service.AuthUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,13 +26,13 @@ public class AuthUserInfoServiceImpl implements AuthUserInfoService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserInfo queryById(Integer id) {
-        return null;
+    public UserInfo getById(Long id) {
+        return authUserInfoDao.findById(id).orElse(null);
     }
 
     @Override
-    public PageInfo<UserInfo> list(int pageNo, int pageSize, String searchKey) {
-        Page<UserInfo> all = authUserInfoDao.findAll(PageRequest.of(pageNo-1, pageSize, Sort.by(Sort.Direction.DESC,"id")));
+    public PageInfo<UserInfo> list(Integer pageNo, Integer pageSize, String searchKey) {
+        Page<UserInfo> all = authUserInfoDao.findAll(PageInfo.startPage(pageNo,pageSize));
         return new PageInfo<>(all);
     }
 
@@ -46,12 +44,7 @@ public class AuthUserInfoServiceImpl implements AuthUserInfoService {
     }
 
     @Override
-    public UserInfo update(UserInfo authUserInfo) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteById(Integer id) {
-        return false;
+    public void deleteById(Long id) {
+        authUserInfoDao.deleteById(id);
     }
 }

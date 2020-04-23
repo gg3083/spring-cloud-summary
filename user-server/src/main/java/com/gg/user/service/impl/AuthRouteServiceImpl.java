@@ -1,12 +1,12 @@
 package com.gg.user.service.impl;
 
-import com.gg.user.entity.Route;
 import com.gg.user.dao.AuthRouteDao;
+import com.gg.user.entity.Route;
+import com.gg.user.entity.dto.PageInfo;
 import com.gg.user.service.AuthRouteService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * (AuthRoute)表服务实现类
@@ -21,27 +21,22 @@ public class AuthRouteServiceImpl implements AuthRouteService {
 
 
     @Override
-    public Route queryById(Integer id) {
-        return null;
+    public Route getById(Long id) {
+        return this.authRouteDao.findById(id).orElse(null);
     }
 
     @Override
-    public List<Route> queryAllByLimit(int offset, int limit) {
-        return null;
+    public PageInfo<Route> list(Integer pageNo, Integer pageSize, String searchKey) {
+        return new PageInfo<>(this.authRouteDao.findAll(PageInfo.startPage(pageNo,pageSize)));
     }
 
     @Override
-    public Route insert(Route authRoute) {
-        return null;
+    public Route save(Route route) {
+        return this.authRouteDao.save(route);
     }
 
     @Override
-    public Route update(Route authRoute) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteById(Integer id) {
-        return false;
+    public void deleteById(Long id) {
+        this.authRouteDao.deleteById(id);
     }
 }

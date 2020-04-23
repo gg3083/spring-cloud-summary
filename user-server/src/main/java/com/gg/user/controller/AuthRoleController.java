@@ -1,6 +1,8 @@
 package com.gg.user.controller;
 
 import com.gg.user.entity.Role;
+import com.gg.user.entity.dto.JsonBack;
+import com.gg.user.entity.dto.PageInfo;
 import com.gg.user.service.AuthRoleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,15 +23,27 @@ public class AuthRoleController {
     @Resource
     private AuthRoleService authRoleService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Role selectOne(Integer id) {
-        return this.authRoleService.queryById(id);
+    @GetMapping("get")
+    public Role selectOne(@RequestParam Long id) {
+        return this.authRoleService.getById(id);
+    }
+
+    @GetMapping("list")
+    public JsonBack list(Integer pageNo, Integer pageSize){
+        PageInfo<Role> list = authRoleService.list(pageNo, pageSize, null);
+        return new JsonBack(list);
+    }
+
+    @PutMapping("save")
+    public JsonBack save(@RequestBody Role role){
+        authRoleService.save(role);
+        return new JsonBack(role);
+    }
+
+    @DeleteMapping("delete")
+    public JsonBack delete(@RequestParam Long id){
+        authRoleService.deleteById(id);
+        return new JsonBack(id);
     }
 
 }
