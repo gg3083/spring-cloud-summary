@@ -1,4 +1,4 @@
-package com.gg.user.entity;
+package com.gg.backend.domain.auth;
 
 import lombok.Data;
 

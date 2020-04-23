@@ -1,7 +1,7 @@
 spring:
   datasource:
     db-config:
-      -  jdbc-url: jdbc:mysql://127.0.0.1:3306/multi-data-source-01?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      -  jdbc-url: jdbc:mysql://127.0.0.1:3306/auth-user-01?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
          driver-class-name: com.mysql.jdbc.Driver
          username: root
          password: root

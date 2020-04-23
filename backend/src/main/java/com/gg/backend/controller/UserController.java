@@ -2,9 +2,7 @@ package com.gg.backend.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gg.backend.domain.LoginDTO;
-import com.gg.backend.domain.User;
 import com.gg.backend.domain.dto.JsonBack;
-import com.gg.backend.mapper1.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -34,20 +32,6 @@ import java.util.List;
  */
 @RestController
 public class UserController {
-
-    @Autowired
-    UserMapper userMapper;
-
-    @PostMapping("user")
-    public String add( String userName,String password){
-        userMapper.insert(userName, password);
-        return "200";
-    }
-
-    @GetMapping("user")
-    public ResponseEntity<List<User>> list(){
-        return ResponseEntity.ok(userMapper.selectAll());
-    }
 
     @Autowired
     private RestTemplate restTemplate;

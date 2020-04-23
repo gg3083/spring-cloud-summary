@@ -3,13 +3,10 @@ package com.gg.backend;
 import com.alibaba.fastjson.JSONObject;
 import com.gg.backend.controller.UserController;
 import com.gg.backend.domain.User;
-import com.gg.backend.mapper1.UserMapper;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -27,11 +24,6 @@ import java.util.Map;
 @AutoConfigureMockMvc
 class BackendApplicationTests {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @MockBean
-    private UserMapper userDao;
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,11 +33,7 @@ class BackendApplicationTests {
 //        List<User> users = userMapper.selectAll();
 //        users.forEach(System.out::println);
         List<User> dataList = new ArrayList<>();
-        Mockito.when(
-                userDao.selectAll(
 
-                )
-        ).thenReturn(dataList);
     }
 
     public @Test void mockTest() throws Exception {

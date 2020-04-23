@@ -45,6 +45,14 @@ spring:
     #encoding: UTF-8
     #content-type: text/html
     mode: HTML5
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #设置数据库方
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:

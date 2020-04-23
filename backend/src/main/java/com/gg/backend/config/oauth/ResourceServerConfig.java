@@ -97,6 +97,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             "/v2/api-docs",
             "/goods/**",
             "/open/**",
+            "/authUserInfo/**",
     };
     /***设置不拦截规则*/
   @Override
