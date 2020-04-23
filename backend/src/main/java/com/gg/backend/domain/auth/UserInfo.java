@@ -28,15 +28,21 @@ public class UserInfo implements Serializable {
     private String realName;
     
     private String password;
+
+    private String phone;
     
     private Integer sex;
     
     private LocalDate birthday;
-    
-    private Integer deleteState;
-    
+
+    private String serverName;
+
+    private String serverId;
+
+    @Column(nullable=false,name="create_time",columnDefinition="datetime DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createTime;
-    
+
+    @Column(nullable=false,name="update_time",columnDefinition="datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0)")
     private LocalDateTime updateTime;
 
 

@@ -30,6 +30,12 @@ public class AuthUserInfoController {
     @GetMapping("get")
     @ApiOperation(value = "用户信息查询")
     public JsonBack get(@RequestParam Long id) {
+        return new JsonBack(this.authUserInfoService.getById(id));
+    }
+
+    @GetMapping("getInfo")
+    @ApiOperation(value = "用户信息查询")
+    public JsonBack getInfo(@RequestParam Long id) {
         return new JsonBack(this.authUserInfoService.getDTOById(id));
     }
 

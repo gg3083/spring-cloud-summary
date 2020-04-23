@@ -14,5 +14,6 @@ import javax.annotation.Resource;
 @Resource
 public interface AuthUserInfoDao extends JpaRepository<UserInfo,Long> {
 
+    UserInfo findByUserName(String userName);
 
 }

@@ -25,11 +25,11 @@ public class Role implements Serializable {
     private String roleName;
     
     private String roleDesc;
-    
-    private Integer deleteState;
-    
+
+    @Column(nullable=false,name="create_time",columnDefinition="datetime DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createTime;
-    
+
+    @Column(nullable=false,name="update_time",columnDefinition="datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0)")
     private LocalDateTime updateTime;
 
 

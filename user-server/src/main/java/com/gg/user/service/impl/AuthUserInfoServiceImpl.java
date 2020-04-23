@@ -92,4 +92,9 @@ public class AuthUserInfoServiceImpl implements AuthUserInfoService {
         }
         authUserRoleService.save(userId, roleId);
     }
+
+    @Override
+    public UserInfo getUserInfoByName(String userName) {
+        return authUserInfoDao.findByUserName(userName);
+    }
 }

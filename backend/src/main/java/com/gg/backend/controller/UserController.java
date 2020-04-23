@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
@@ -63,6 +62,18 @@ public class UserController {
         hashMap.put("role","ROLE_ADMIN");
         hashMap.put("token","token");
         return hashMap;
+
+    }
+
+    @GetMapping("user/get")
+    public JsonBack get(String username, String password){
+        HashMap hashMap = new HashMap();
+        hashMap.put("code",0);
+        hashMap.put("id",666);
+        hashMap.put("realName",username);
+        hashMap.put("role","ROLE_ADMIN");
+        hashMap.put("token","token");
+        return new JsonBack();
 
     }
 }

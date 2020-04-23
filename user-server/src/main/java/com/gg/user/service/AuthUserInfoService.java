@@ -23,4 +23,6 @@ public interface AuthUserInfoService {
     void deleteById(Long id);
 
     void setRole(Long userId, Long roleId);
+
+    UserInfo getUserInfoByName(String userName);
 }

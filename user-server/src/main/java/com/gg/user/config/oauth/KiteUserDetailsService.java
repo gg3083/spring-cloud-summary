@@ -1,5 +1,7 @@
 package com.gg.user.config.oauth;
 
+import com.gg.user.entity.UserInfo;
+import com.gg.user.service.AuthUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,25 +37,21 @@ public class KiteUserDetailsService implements UserDetailsService {
     @Autowired
     private TokenStore redisTokenStore;
 
+    @Autowired
+    private AuthUserInfoService userInfoService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("usernameis:" + username);
-        // 查询数据库操作
-        if(!username.equals("admin")){
-            throw new UsernameNotFoundException("the user is not found");
-        }else{
-            // 用户角色也应在数据库中获取
-            String role = "ROLE_ADMIN";
-            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(role));
-            // 线上环境应该通过用户名查询数据库获取加密后的密码
-            String password = passwordEncoder.encode("123456");
-            // 返回默认的 User
-            // return new org.springframework.security.core.userdetails.User(username,password, authorities);
-
-            // 返回自定义的 KiteUserDetails
-            User user = new User(username,password,authorities);
-           return user;
+        log.info("当前用户{} 尝试登录:" + username);
+        UserInfo userInfo = userInfoService.getUserInfoByName(username);
+        if ( userInfo == null){
+            throw new UsernameNotFoundException("该用户不存在");
         }
+        // 默认给ADMIN 此处不做权限管理
+        String role = "ROLE_ADMIN";
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        User user = new User(username,userInfo.getPassword(),authorities);
+        return user;
     }
 }
