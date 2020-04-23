@@ -2,9 +2,7 @@ package com.gg.user.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -21,6 +19,7 @@ public class Role implements Serializable {
     private static final long serialVersionUID = -78553782515870592L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String roleName;

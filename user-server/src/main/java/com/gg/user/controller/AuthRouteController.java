@@ -28,8 +28,8 @@ public class AuthRouteController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public Route selectOne(Integer id) {
-        return this.authRouteService.queryById(id);
+    public Route selectOne(Long id) {
+        return this.authRouteService.getById(id);
     }
 
 }

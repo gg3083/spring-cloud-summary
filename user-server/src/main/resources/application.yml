@@ -12,10 +12,11 @@ spring:
   application:
     name: auth-user
   datasource:
-    url: jdbc:mysql://localhost:3306/spring_cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/auth-user-01?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+    data: classpath:data.sql
     hikari:
       connection-timeout: 30000
       idle-timeout: 600000
@@ -23,6 +24,9 @@ spring:
       maximum-pool-size: 9
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #设置数据库方
 security:
   oauth2:

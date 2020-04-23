@@ -1,0 +1,2 @@
+INSERT INTO `oauth_client_details` VALUES ('order-client', null, '$2a$10$GoIOhjqFKVyrabUNcie8d.ADX.qZSxpYbO6YK4L2gsNzlCIxEUDlW', 'all', 'authorization_code,refresh_token,password', null, null, '3600', '36000', null, '1');
+INSERT INTO `oauth_client_details` VALUES ('user-client', null, '$2a$10$o2l5kA7z.Caekp72h5kU7uqdTDrlamLq.57M1F6ulJln9tRtOJufq', 'all', 'authorization_code,refresh_token,password', null, null, '3600', '36000', null, '1');

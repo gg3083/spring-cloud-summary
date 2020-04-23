@@ -2,9 +2,7 @@ package com.gg.user.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -20,11 +18,12 @@ public class UserRole implements Serializable {
     private static final long serialVersionUID = 554406303893396480L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private Integer userId;
+    private Long userId;
     
-    private Integer roleId;
+    private Long roleId;
 
 
 
